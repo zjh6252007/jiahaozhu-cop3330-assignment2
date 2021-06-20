@@ -10,10 +10,11 @@ public class password {
     public static final String strong = "^(?=.*[a-z])(?=.*[0-9]).{8,}$";
     public static final String very_strong = "^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*]).{8,}$";
     public static void main(String[] args) {
+        passwordValidator ps = new passwordValidator();
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the password");
         String key = scan.nextLine();
-        int strength = passwordValidator(key);
+        int strength = ps.Validator(key);
         switch(strength)
         {
             case 1:System.out.println("The password" + "'"+key+"' "+"is a very strong password");
@@ -26,23 +27,4 @@ public class password {
             default:break;
         }
     }
-    public static int passwordValidator(String password)
-    {
-        if(password.matches(very_strong))
-        {
-            return 1;
-        }
-        else if(password.matches(strong))
-        {
-            return 2;
-        }
-        else if(password.matches(weak))
-        {
-            return 3;
-        }
-        else{
-            return 4;
-        }
-    }
-
 }
